@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Remove Background</title>
+
+    <script src="p5.js"></script>
+    <script src="sketch.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+  </head>
+  <body>
+    <h1 class="centerText">Remove Background App</h1>
+    <p class="centerText">Key Out Your Green Screen</p>
+    <div id="controlsDiv">
+      <label for="fileInput" id="fileInputLabel">
+        <span>Choose file</span>
+        <span id="fileInputSpan"></span>
+        <img src="Samples/symbol.png" width="25px" alt="upload_your_image_here_logo"/>
+      </label>
+      <label class="marginLeft">
+        Initial rgba(
+        <input id="initialColorInput" type="color" value="#000000"/>,
+        <input id="alphaI" class="width50" type="number" value="255" min="0" max="255"/>)
+      </label>
+      <label class="marginLeft">
+        Final rgba(
+        <input id="finalColorInput" type="color" value="#0a0a0a"/>,
+        <input id="alphaF" class="width50" type="number" value="255" min="0" max="255"/>)
+      </label>
+      <button id="editButton" class="marginLeft padding7">EDIT!</button>
+      <button id="saveButton" class="marginLeft padding7">Save it!</button>
+    </div>
+    <div id="errDiv" style="color: red;"></div>
+    <div id="loadedImageDiv"></div>
+    <div id="cnvDiv"></div>
+    <div id="lastLine" class="centerText">Made with 🧡 by Snehil</div>
+  </body>
+</html>

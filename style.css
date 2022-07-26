@@ -1,0 +1,48 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+body{
+  overflow: overlay;
+  font-size: 15px;
+  font-family: 'Times New Roman', Times, serif;
+}
+canvas {
+  display: block;
+}
+.marginLeft{
+  margin-left: 24px;
+}
+.width50{
+  width: 50px;
+}
+.padding7{
+  padding: 7px;
+}
+.centerText{
+  text-align: center;
+}
+#controlsDiv{
+  text-align: center;
+  margin: 8px 0px 16px 0px;
+}
+#fileInputLabel{
+  border: 1px solid grey;
+  padding: 9px;
+}
+#fileInput{
+  opacity: 0;
+  width: 30px;
+}
+#fileInputLabel > img{
+  vertical-align: middle;
+}
+#loadedImageDiv{
+  border: 1px solid pink;
+  text-align: center;
+  max-width: 100%;
+  background-color: lightgreen;
+}
+#lastLine{
+  margin-top: 40px;
+}
