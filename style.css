@@ -43,6 +43,6 @@ canvas {
   max-width: 100%;
   background-color: lightgreen;
 }
-#lastLine{
-  margin-top: 40px;
+footer{
+  margin-top: 5rem;
 }

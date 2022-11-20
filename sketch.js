@@ -24,8 +24,8 @@ function setup() {
     edited = false;
     resizeCanvas(windowWidth, 1);
     if(file.type === 'image'){
-      original=loadImage(URL.createObjectURL(file.file));
-      let x=createImg(file.data, 'original image input');
+      original = loadImage(URL.createObjectURL(file.file));
+      let x = createImg(file.data, 'original image input');
       x.style("width", "30%");
       select("#loadedImageDiv").html("");
       x.parent("loadedImageDiv");
@@ -67,14 +67,14 @@ function setup() {
       // bf = arr[6];
       // af = arr[7];
 
-      ri = Math.min(ri, rf);
-      gi = Math.min(gi, gf);
-      bi = Math.min(bi, bf);
-      ai = Math.min(ai, af);
-      rf = Math.max(ri, rf);
-      gf = Math.max(gi, gf);
-      bf = Math.max(bi, bf);
-      af = Math.max(ai, af);
+      const rmin = Math.min(ri, rf),
+      gmin = Math.min(gi, gf),
+      bmin = Math.min(bi, bf),
+      amin = Math.min(ai, af),
+      rmax = Math.max(ri, rf),
+      gmax = Math.max(gi, gf),
+      bmax = Math.max(bi, bf),
+      amax = Math.max(ai, af);
       
       // let isArrValid = validateArr(arr);
       // let errDiv = select("#errDiv");
@@ -110,8 +110,8 @@ function setup() {
           // let br = (red + green + blue ) / 3;
 
           //apply colors from 'original' image to 'result' image
-          if(!(red >= ri && red <= rf && green >= gi && green <= gf && 
-            blue >= bi && blue <= bf && alpha >= ai && alpha <= af)) {
+          if(!(red >= rmin && red <= rmax && green >= gmin && green <= gmax && 
+            blue >= bmin && blue <= bmax && alpha >= amin && alpha <= amax )) {
             result.pixels[index] = red;
             result.pixels[index + 1] = green;
             result.pixels[index + 2] = blue;
