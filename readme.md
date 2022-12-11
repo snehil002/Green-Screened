@@ -2,8 +2,7 @@
 ~ By Snehil Kumar
 
 >Key out your green screen
-
-<img src="ss/green-screened.png" alt="Green Screened Screenshot" width="482" height="500" />
+>Find a Screenshot in ss/ directory
 
 Web App to remove a particular color from an image and make it transparent.
 

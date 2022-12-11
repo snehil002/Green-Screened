@@ -6,37 +6,49 @@
     
     <title>Green-Screened</title>
 
-    <script src="p5.js"></script>
-    <script src="sketch.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js" defer></script>
+
+    <script src="sketch.js" defer></script>
     <link rel="stylesheet" type="text/css" href="style.css">
 
   </head>
   <body>
     <h1 class="centerText">Green-Screened App</h1>
+    
     <p class="centerText">Key Out Your Green Screen</p>
+    
     <p class="centerText">Simply choose an image file, pick two colors from the image, and edit! Now the file is transparent and yours!</p>
+    
     <div id="controlsDiv">
       <label for="fileInput" id="fileInputLabel">
         <span>Choose file</span>
-        <span id="fileInputSpan"></span>
+        <input type="file" id="fileInput" accept="image/png, image/jpeg, image/jpg" />
         <img src="Samples/symbol.png" width="25px" alt="upload_your_image_here_logo"/>
       </label>
+      
       <label class="marginLeft">
         Initial rgba(
         <input id="initialColorInput" type="color" value="#000000"/>,
         <input id="alphaI" class="width50" type="number" value="255" min="0" max="255"/>)
       </label>
+      
       <label class="marginLeft">
         Final rgba(
         <input id="finalColorInput" type="color" value="#0a0a0a"/>,
         <input id="alphaF" class="width50" type="number" value="255" min="0" max="255"/>)
       </label>
+
       <button id="editButton" class="marginLeft padding7">EDIT!</button>
-      <button id="saveButton" class="marginLeft padding7">Save it!</button>
+      
+      <button id="saveButton" class="marginLeft padding7">Download!</button>
     </div>
+    
     <div id="errDiv" style="color: red;"></div>
+    
     <div id="loadedImageDiv"></div>
+    
     <div id="cnvDiv"></div>
+
     <footer id="lastLine" class="centerText">Made with 🧡 by Snehil</footer>
   </body>
 </html>

@@ -6,10 +6,10 @@ let edited = false;
 let ri, gi, bi, ai, rf, gf, bf, af;
 
 function windowResized(){
-  if(result){
+  if(result) {
     resizeCanvas(windowWidth, (width/3)/(result.width/result.height));
   }
-  else{
+  else {
     resizeCanvas(windowWidth, 1);
   }
 }
@@ -19,20 +19,32 @@ function setup() {
   cnv = createCanvas(windowWidth, 1);
   cnv.parent("#cnvDiv");
   
-  let input = createFileInput((file)=>{
-    console.log(file);
+  let fileInput = select("#fileInput").elt;
+  fileInput.addEventListener("change", (event)=>{
+    let selectedFile = event.target.files[0];
     edited = false;
+    select("#loadedImageDiv").html("");
     resizeCanvas(windowWidth, 1);
-    if(file.type === 'image'){
-      original = loadImage(URL.createObjectURL(file.file));
-      let x = createImg(file.data, 'original image input');
-      x.style("width", "30%");
-      select("#loadedImageDiv").html("");
-      x.parent("loadedImageDiv");
+
+    if(selectedFile){
+      console.log(selectedFile);
+    
+      if(selectedFile.type === "image/png" || selectedFile.type === "image/jpg" || selectedFile.type === "image/jpeg") {
+        let url = URL.createObjectURL(selectedFile);
+        original = loadImage(url);
+        let x = createImg(url, "Original Input Image");
+        x.style("width", "30%");
+        x.parent("loadedImageDiv");
+      }
+      else {
+        select("#loadedImageDiv").html("Wrong File! Sorry!");
+      }
+    
+    }
+    else {
+      select("#loadedImageDiv").html("No Image Selected");
     }
   });
-  input.id("fileInput");
-  input.parent("fileInputSpan");
 
   let editButton = select("#editButton");
   editButton.mouseClicked(() => {

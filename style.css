@@ -26,13 +26,13 @@ canvas {
   text-align: center;
   margin: 8px 0px 16px 0px;
 }
-#fileInputLabel{
-  border: 1px solid grey;
-  padding: 9px;
-}
 #fileInput{
   opacity: 0;
   width: 30px;
+}
+#fileInputLabel{
+  border: 1px solid grey;
+  padding: 9px;
 }
 #fileInputLabel > img{
   vertical-align: middle;
