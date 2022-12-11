@@ -1,7 +1,7 @@
 # Green-Screened
 ~ By Snehil Kumar
 
->Key out your green screen
+>Key out your green screen  
 >Find a Screenshot in ss/ directory
 
 Web App to remove a particular color from an image and make it transparent.
