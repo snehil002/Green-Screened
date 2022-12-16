@@ -4,27 +4,44 @@ let original;
 let result;
 let edited = false;
 let ri, gi, bi, ai, rf, gf, bf, af;
+let cnvWidth;
+
 
 function windowResized(){
-  if(result) {
-    resizeCanvas(windowWidth, (width/3)/(result.width/result.height));
+  if(windowWidth <= 600){
+    cnvWidth = 0.98 * windowWidth;
+  }
+  else if (windowWidth <= 900) {
+    cnvWidth = 0.7 * windowWidth;
   }
   else {
-    resizeCanvas(windowWidth, 1);
+    cnvWidth = 0.5 * windowWidth;
   }
+  
+  resizeCanvas(cnvWidth, select("#cnvDiv").height);
 }
 
 function setup() {
   pixelDensity(1);
-  cnv = createCanvas(windowWidth, 1);
+
+  if(windowWidth <= 600) {
+    cnvWidth = 0.98 * windowWidth;
+  }
+  else if (windowWidth <= 900) {
+    cnvWidth = 0.7 * windowWidth;
+  }
+  else {
+    cnvWidth = 0.5 * windowWidth;
+  }
+
+  cnv = createCanvas(cnvWidth, select("#cnvDiv").height);
   cnv.parent("#cnvDiv");
-  
+
   let fileInput = select("#fileInput").elt;
   fileInput.addEventListener("change", (event)=>{
     let selectedFile = event.target.files[0];
     edited = false;
     select("#loadedImageDiv").html("");
-    resizeCanvas(windowWidth, 1);
 
     if(selectedFile){
       console.log(selectedFile);
@@ -33,16 +50,17 @@ function setup() {
         let url = URL.createObjectURL(selectedFile);
         original = loadImage(url);
         let x = createImg(url, "Original Input Image");
-        x.style("width", "30%");
+        x.class("input-image");
         x.parent("loadedImageDiv");
+        showInputImage();
       }
       else {
         select("#loadedImageDiv").html("Wrong File! Sorry!");
       }
-    
+
     }
     else {
-      select("#loadedImageDiv").html("No Image Selected");
+      select("#loadedImageDiv").html("");
     }
   });
 
@@ -52,7 +70,7 @@ function setup() {
       edited = true;
       console.log(original);
       result = createGraphics(original.width, original.height);
-      resizeCanvas(windowWidth, (width/3)/(result.width/result.height));
+      // resizeCanvas(cnvWidth, select("#cnvDiv").height);
       
       original.loadPixels();
       result.loadPixels();
@@ -133,6 +151,7 @@ function setup() {
       }
       original.updatePixels();
       result.updatePixels();
+      showOutputImage();
     }
   });   
 
@@ -155,13 +174,44 @@ function setup() {
 
 }
 
-function draw(){
-  background(0, 255, 0);
-  if(result && edited){
-    image(result, width/2, height/2, width/3, (width/3)/(result.width/result.height));
-  }
+
+function showInputImage() {
+  select("#loadedImageDiv").addClass("flex");
+  select("#loadedImageDiv").removeClass("display-none");
+
+  select("#cnvDiv").removeClass("display-block");
+  select("#cnvDiv").addClass("display-none");
+  resizeCanvas(cnvWidth, select("#cnvDiv").height);
 }
 
-// function pleaseSave() {
-  
-// }
+function showOutputImage() {
+  select("#loadedImageDiv").addClass("display-none");
+  select("#loadedImageDiv").removeClass("flex");
+
+  select("#cnvDiv").removeClass("display-none");
+  select("#cnvDiv").addClass("display-block");
+  resizeCanvas(cnvWidth, select("#cnvDiv").height);
+}
+
+
+
+function draw(){
+  // background(221, 160, 221);
+  if(result && edited){
+    let imgWidth = result.width;
+    let maxWidth = width;
+    let imgHeight = result.height;
+    let maxHeight = height;
+    let ratio = imgWidth / imgHeight;
+
+    if (imgWidth > maxWidth) {
+      imgWidth = maxWidth;
+      imgHeight = imgWidth / ratio;
+    }
+    if (imgHeight > maxHeight) {
+      imgHeight = maxHeight;
+      imgWidth = imgHeight * ratio;
+    }
+    image(result, width/2, height/2, imgWidth, imgHeight);
+  }
+}

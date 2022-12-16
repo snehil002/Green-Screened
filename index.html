@@ -13,42 +13,53 @@
 
   </head>
   <body>
-    <h1 class="centerText">Green-Screened App</h1>
+    <!-- <h1 class="center-text">Green-Screened App</h1>
+  
+    <p class="center-text">Key Out Your Green Screen</p>
     
-    <p class="centerText">Key Out Your Green Screen</p>
-    
-    <p class="centerText">Simply choose an image file, pick two colors from the image, and edit! Now the file is transparent and yours!</p>
-    
-    <div id="controlsDiv">
+    <p class="center-text">Simply choose an image file, pick two colors from the image, and edit! Now the file is transparent and yours!</p> -->
+ 
+    <div class="center-text controlsDiv">
       <label for="fileInput" id="fileInputLabel">
         <span>Choose file</span>
         <input type="file" id="fileInput" accept="image/png, image/jpeg, image/jpg" />
         <img src="Samples/symbol.png" width="25px" alt="upload_your_image_here_logo"/>
       </label>
       
-      <label class="marginLeft">
+      <label>
         Initial rgba(
         <input id="initialColorInput" type="color" value="#000000"/>,
         <input id="alphaI" class="width50" type="number" value="255" min="0" max="255"/>)
       </label>
       
-      <label class="marginLeft">
+      <label>
         Final rgba(
         <input id="finalColorInput" type="color" value="#0a0a0a"/>,
         <input id="alphaF" class="width50" type="number" value="255" min="0" max="255"/>)
       </label>
 
-      <button id="editButton" class="marginLeft padding7">EDIT!</button>
+      <button id="editButton" class="padding7">Edit!</button>
       
-      <button id="saveButton" class="marginLeft padding7">Download!</button>
+      <button id="saveButton" class="padding7">Download!</button>
+
     </div>
     
-    <div id="errDiv" style="color: red;"></div>
-    
-    <div id="loadedImageDiv"></div>
-    
-    <div id="cnvDiv"></div>
+    <div class="center-text controlsDiv">
+      <button id="showInputButton" onclick="showInputImage()" class="padding7">
+        Before
+      </button>
 
-    <footer id="lastLine" class="centerText">Made with 🧡 by Snehil</footer>
+      <button id="showOutputButton" onclick="showOutputImage()" class="padding7">
+        After
+      </button>
+    </div>
+   
+    <div class="box">
+      <div id="loadedImageDiv" class="flex"></div>
+      
+      <div id="cnvDiv" class="display-none"></div>
+    </div>
+      
+    <footer id="lastLine" class="center-text">Made with 🧡 by Snehil</footer>
   </body>
 </html>
