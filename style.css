@@ -65,7 +65,7 @@ canvas {
 }
 #loadedImageDiv, #cnvDiv {
   background-color: #294500;
-  background-image: url("/assets/food.png");
+  background-image: url("assets/food.png");
   width: 50%;
   height: 100%;
   border-radius: 0.7rem;
