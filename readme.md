@@ -2,12 +2,15 @@
 ~ By Snehil Kumar
 
 >Key out your green screen  
->Find a Screenshot in ss/ directory
+>Find a Screenshot in ss/ directory  
 
 ## About this project
 This is a static front-end only Web App.  
 This app removes a specific color from an image and  
 returns a transparent PNG image.  
+
+This is not a Course or a Team project. This is  
+an Individual Project.  
 
 ## Recommended control flow in the App:  
 1. Upload an image  
